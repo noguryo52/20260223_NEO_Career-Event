@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" class="overflow-x-hidden">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>キャリア戦略会議室 | 2026.02.23 福岡開催</title>
     <meta name="description" content="3月解禁直前。ここから描く、逆転のキャリア戦略。人事の本音を聞き、自分だけの価値観を見つける1日。">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -11,11 +11,18 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
+        /* 基本設定：横スクロールを完全に禁止 */
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+            position: relative;
+        }
+        
         body {
             font-family: 'Noto Sans JP', sans-serif;
             background-color: #0f172a; /* slate-900 */
             color: white;
-            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
         
         /* プリズムグラデーション */
@@ -27,9 +34,6 @@
         }
         .bg-prism {
             background: linear-gradient(135deg, #22d3ee, #facc15, #ec4899);
-        }
-        .border-prism {
-            border-image: linear-gradient(135deg, #22d3ee, #facc15, #ec4899) 1;
         }
 
         /* 光るエフェクト */
@@ -44,17 +48,20 @@
         .hero-bg {
             background: radial-gradient(circle at 50% 50%, #1e293b 0%, #0f172a 100%);
             position: relative;
+            /* 重要：装飾のはみ出しを防ぐ */
+            overflow: hidden; 
         }
         
+        /* 背景の光装飾を修正（画面内にはみ出さないように調整） */
         .hero-bg::before {
             content: '';
             position: absolute;
-            top: -10%;
-            left: -10%;
-            width: 120%;
-            height: 120%;
-            background: radial-gradient(circle at 50% 30%, rgba(34, 211, 238, 0.15), transparent 60%),
-                        radial-gradient(circle at 80% 80%, rgba(236, 72, 153, 0.15), transparent 60%);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 30%, rgba(34, 211, 238, 0.15), transparent 50%),
+                        radial-gradient(circle at 70% 70%, rgba(236, 72, 153, 0.15), transparent 50%);
             z-index: 0;
             pointer-events: none;
         }
@@ -84,26 +91,26 @@
     <!-- ナビゲーション -->
     <nav class="fixed top-0 w-full z-50 bg-slate-900/90 backdrop-blur-md border-b border-white/10">
         <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="font-bold text-lg md:text-xl tracking-wider">キャリア戦略会議室</div>
-            <a href="#entry" class="bg-white text-slate-900 px-4 py-2 rounded-full font-bold text-sm hover:bg-slate-200 transition duration-300">
+            <div class="font-bold text-lg md:text-xl tracking-wider truncate mr-2">キャリア戦略会議室</div>
+            <a href="#entry" class="flex-shrink-0 bg-white text-slate-900 px-4 py-2 rounded-full font-bold text-sm hover:bg-slate-200 transition duration-300">
                 参加申込
             </a>
         </div>
     </nav>
 
     <!-- ヒーローセクション -->
-    <header class="hero-bg min-h-screen flex items-center justify-center pt-20 relative overflow-hidden">
+    <header class="hero-bg min-h-screen flex items-center justify-center pt-20 relative w-full">
         <div class="container mx-auto px-4 text-center z-10 relative">
             
-            <!-- アイコン的ビジュアル（CSSで表現） -->
-            <div class="floating mb-8 inline-block relative">
+            <!-- アイコン -->
+            <div class="floating mb-8 inline-block relative max-w-full">
                 <i class="fas fa-compass text-8xl md:text-9xl text-prism opacity-90 drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]"></i>
                 <div class="absolute inset-0 bg-prism blur-3xl opacity-20 rounded-full"></div>
             </div>
 
             <p class="text-cyan-300 font-bold tracking-widest mb-4">2026.02.23 (Mon) FUKUOKA</p>
             
-            <h1 class="text-4xl md:text-6xl lg:text-7xl font-black mb-6 leading-tight">
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-black mb-6 leading-tight break-words">
                 キャリア<span class="text-prism">戦略</span>会議室
             </h1>
             
@@ -111,48 +118,65 @@
                 3月解禁直前。<br class="md:hidden">ここから描く、<span class="text-white border-b-2 border-yellow-400">逆転のキャリア戦略</span>。
             </p>
 
-            <div class="flex flex-col md:flex-row gap-4 justify-center items-center mb-12">
-                <a href="#entry" class="group relative px-8 py-4 bg-prism rounded-full font-bold text-slate-900 text-xl overflow-hidden btn-shine shadow-[0_0_20px_rgba(34,211,238,0.5)] transition hover:scale-105">
+            <div class="flex flex-col md:flex-row gap-4 justify-center items-center mb-12 w-full px-4 md:px-0">
+                <a href="#entry" class="w-full md:w-auto text-center group relative px-8 py-4 bg-prism rounded-full font-bold text-slate-900 text-xl overflow-hidden btn-shine shadow-[0_0_20px_rgba(34,211,238,0.5)] transition hover:scale-105">
                     <span class="relative z-10">無料で参加する <i class="fas fa-arrow-right ml-2"></i></span>
                 </a>
             </div>
 
-            <div class="flex flex-wrap justify-center gap-2 md:gap-6 text-xs md:text-sm text-slate-400">
-                <span class="border border-slate-600 rounded px-2 py-1">#人事の本音</span>
-                <span class="border border-slate-600 rounded px-2 py-1">#自己分析完了</span>
-                <span class="border border-slate-600 rounded px-2 py-1">#企業PRなし</span>
+            <div class="flex flex-wrap justify-center gap-2 md:gap-6 text-xs md:text-sm text-slate-400 px-2">
+                <span class="border border-slate-600 rounded px-2 py-1 whitespace-nowrap">#人事の本音</span>
+                <span class="border border-slate-600 rounded px-2 py-1 whitespace-nowrap">#自己分析完了</span>
+                <span class="border border-slate-600 rounded px-2 py-1 whitespace-nowrap">#企業PRなし</span>
             </div>
         </div>
     </header>
 
     <!-- インサイト（共感） -->
-    <section class="py-20 bg-slate-900 relative">
+    <section class="py-20 bg-slate-900 relative w-full overflow-hidden">
         <div class="max-w-4xl mx-auto px-4">
             <h2 class="text-2xl md:text-3xl font-bold text-center mb-12">
                 <span class="border-b border-cyan-500 pb-2">こんな「迷い」ありませんか？</span>
             </h2>
             
             <div class="grid md:grid-cols-3 gap-6">
-                <div class="glow-box p-6 rounded-xl text-center">
-                    <i class="fas fa-question text-3xl text-slate-500 mb-4"></i>
-                    <p class="text-slate-300">「成長したい」とは思っているけど、<br>具体的にどうなりたいのか<br>言語化できない。</p>
+                <!-- 悩み1 -->
+                <div class="glow-box p-6 rounded-xl text-center flex flex-col items-center">
+                    <div class="w-full aspect-[4/3] bg-slate-800 rounded-lg overflow-hidden mb-6 border border-white/10 shadow-lg relative group">
+                        <img src="images/LP1.png" 
+                             alt="ノートに向かって悩む様子" 
+                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100">
+                    </div>
+                    <p class="text-slate-300 text-sm md:text-base">「成長したい」とは思っているけど、<br>具体的にどうなりたいのか<br>言語化できない。</p>
                 </div>
-                <div class="glow-box p-6 rounded-xl text-center">
-                    <i class="fas fa-question text-3xl text-slate-500 mb-4"></i>
-                    <p class="text-slate-300">就活の準備をしなきゃと<br>焦っているが、ESの書き方も<br>面接対策も何から手を<br>つければいいかわからない。</p>
+
+                <!-- 悩み2 -->
+                <div class="glow-box p-6 rounded-xl text-center flex flex-col items-center">
+                    <div class="w-full aspect-[4/3] bg-slate-800 rounded-lg overflow-hidden mb-6 border border-white/10 shadow-lg relative group">
+                        <img src="images/LP2.png" 
+                             alt="PC作業で焦る様子" 
+                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100">
+                    </div>
+                    <p class="text-slate-300 text-sm md:text-base">就活の準備をしなきゃと<br>焦っているが、ESの書き方も<br>面接対策も何から手を<br>つければいいかわからない。</p>
                 </div>
-                <div class="glow-box p-6 rounded-xl text-center">
-                    <i class="fas fa-question text-3xl text-slate-500 mb-4"></i>
-                    <p class="text-slate-300">ネット上の<br>「就活の正解」っぽい言葉には<br>何となく違和感がある。</p>
+
+                <!-- 悩み3 -->
+                <div class="glow-box p-6 rounded-xl text-center flex flex-col items-center">
+                    <div class="w-full aspect-[4/3] bg-slate-800 rounded-lg overflow-hidden mb-6 border border-white/10 shadow-lg relative group">
+                        <img src="images/LP3.png" 
+                             alt="スマホを見て違和感を感じる様子" 
+                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100">
+                    </div>
+                    <p class="text-slate-300 text-sm md:text-base">ネット上の<br>「就活の正解」っぽい言葉には<br>何となく違和感がある。</p>
                 </div>
             </div>
 
             <div class="mt-16 text-center">
-                <p class="text-xl md:text-2xl font-bold leading-relaxed">
+                <p class="text-xl md:text-2xl font-bold leading-relaxed px-2">
                     必要なのは、正解を「教わる」ことではなく、<br>
-                    <span class="text-prism text-4xl block mt-2">あなただけの価値観を「見つける」こと。</span>
+                    <span class="text-prism text-2xl md:text-4xl block mt-2">あなただけの価値観を「見つける」こと。</span>
                 </p>
-                <p class="mt-6 text-slate-400">
+                <p class="mt-6 text-slate-400 text-sm md:text-base">
                     会社説明、一切なし。企業からのPR、一切なし。<br>
                     100%「あなたの就活」のための作戦会議です。
                 </p>
@@ -161,28 +185,38 @@
     </section>
 
     <!-- タイムライン (4つのステップ) -->
-    <section class="py-20 bg-slate-800 relative overflow-hidden">
-        <!-- 背景装飾 -->
-        <div class="absolute top-0 right-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl"></div>
-        <div class="absolute bottom-0 left-0 w-96 h-96 bg-pink-500/10 rounded-full blur-3xl"></div>
+    <section class="py-20 bg-slate-800 relative w-full overflow-hidden">
+        <!-- 背景装飾：はみ出し防止のため位置を調整 -->
+        <div class="absolute top-0 right-[-100px] w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-0 left-[-100px] w-96 h-96 bg-pink-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
         <div class="max-w-5xl mx-auto px-4 relative z-10">
             <h2 class="text-3xl md:text-5xl font-black text-center mb-16">TIMELINE</h2>
             
-            <div class="space-y-8">
+            <div class="space-y-12">
                 <!-- Step 1 -->
                 <div class="glow-box rounded-2xl p-6 md:p-8 flex flex-col md:flex-row gap-6 items-start transform transition hover:-translate-y-1">
-                    <div class="flex-shrink-0 text-center md:w-32">
+                    <div class="flex-shrink-0 text-center md:w-32 w-full">
                         <div class="text-sm text-cyan-400 font-bold">Step 01</div>
                         <div class="text-3xl font-black">60<span class="text-sm font-normal text-slate-400 ml-1">min</span></div>
                     </div>
-                    <div class="flex-grow">
-                        <h3 class="text-2xl font-bold mb-3 flex items-center">
+                    <div class="flex-grow w-full">
+                        <h3 class="text-2xl font-bold mb-3 flex items-center justify-center md:justify-start">
                             <i class="fas fa-search text-cyan-400 mr-3"></i>
                             就活の攻略法を手に入れる
                         </h3>
-                        <p class="bg-yellow-500/20 text-yellow-300 font-bold text-lg inline-block px-4 py-1 rounded-full mb-4">〜 パネルディスカッション 〜</p>
-                        <p class="text-slate-300 leading-relaxed">
+                        <div class="text-center md:text-left">
+                            <p class="bg-yellow-500/20 text-yellow-300 font-bold text-lg inline-block px-4 py-1 rounded-full mb-6">〜 パネルディスカッション 〜</p>
+                        </div>
+                        
+                        <!-- 4:3画像エリア -->
+                        <div class="w-full md:w-2/3 aspect-[4/3] bg-slate-800 rounded-xl overflow-hidden mb-6 border border-white/10 shadow-lg relative group mx-auto md:mx-0">
+                            <img src="images/LP4.png" 
+                                 alt="パネルディスカッションの様子" 
+                                 class="w-full h-full object-cover transform transition hover:scale-105 duration-500">
+                        </div>
+
+                        <p class="text-slate-300 leading-relaxed text-lg">
                             福岡の人気企業の人事が勢揃い。「人事は面接でどこを見ている？」など、ネットにはないリアルな視点を公開。NG質問なしのぶっちゃけトークで、就活の「裏側のルール」を知るチャンス。
                         </p>
                     </div>
@@ -190,17 +224,27 @@
 
                 <!-- Step 2 -->
                 <div class="glow-box rounded-2xl p-6 md:p-8 flex flex-col md:flex-row gap-6 items-start transform transition hover:-translate-y-1">
-                    <div class="flex-shrink-0 text-center md:w-32">
+                    <div class="flex-shrink-0 text-center md:w-32 w-full">
                         <div class="text-sm text-yellow-400 font-bold">Step 02</div>
                         <div class="text-3xl font-black">100<span class="text-sm font-normal text-slate-400 ml-1">min</span></div>
                     </div>
-                    <div class="flex-grow">
-                        <h3 class="text-2xl font-bold mb-3 flex items-center">
+                    <div class="flex-grow w-full">
+                        <h3 class="text-2xl font-bold mb-3 flex items-center justify-center md:justify-start">
                             <i class="fas fa-comments text-yellow-400 mr-3"></i>
                             自分だけの言葉を手にいれる
                         </h3>
-                        <p class="bg-yellow-500/20 text-yellow-300 font-bold text-lg inline-block px-4 py-1 rounded-full mb-4">〜 ワールドカフェ 〜</p>
-                        <p class="text-slate-300 leading-relaxed">
+                        <div class="text-center md:text-left">
+                            <p class="bg-yellow-500/20 text-yellow-300 font-bold text-lg inline-block px-4 py-1 rounded-full mb-6">〜 ワールドカフェ 〜</p>
+                        </div>
+                        
+                        <!-- 4:3画像エリア -->
+                        <div class="w-full md:w-2/3 aspect-[4/3] bg-slate-800 rounded-xl overflow-hidden mb-6 border border-white/10 shadow-lg relative group mx-auto md:mx-0">
+                            <img src="images/LP5.png" 
+                                 alt="ワールドカフェで対話する学生たち" 
+                                 class="w-full h-full object-cover transform transition hover:scale-105 duration-500">
+                        </div>
+
+                        <p class="text-slate-300 leading-relaxed text-lg">
                             たっぷり100分。「よくある志望動機」を「あなただけの言葉」へ。人事のプロとの対話を通じて、自分だけの価値観を発見。面接でどんなに深掘りされても答えられる「自分の言葉」を磨きます。
                         </p>
                     </div>
@@ -208,17 +252,27 @@
 
                 <!-- Step 3 -->
                 <div class="glow-box rounded-2xl p-6 md:p-8 flex flex-col md:flex-row gap-6 items-start transform transition hover:-translate-y-1">
-                    <div class="flex-shrink-0 text-center md:w-32">
+                    <div class="flex-shrink-0 text-center md:w-32 w-full">
                         <div class="text-sm text-pink-400 font-bold">Step 03</div>
                         <div class="text-3xl font-black">30<span class="text-sm font-normal text-slate-400 ml-1">min</span></div>
                     </div>
-                    <div class="flex-grow">
-                        <h3 class="text-2xl font-bold mb-3 flex items-center">
+                    <div class="flex-grow w-full">
+                        <h3 class="text-2xl font-bold mb-3 flex items-center justify-center md:justify-start">
                             <i class="fas fa-pen-nib text-pink-400 mr-3"></i>
                             持ち帰れる「自分だけの就活の軸」
                         </h3>
-                        <p class="bg-yellow-500/20 text-yellow-300 font-bold text-lg inline-block px-4 py-1 rounded-full mb-4">〜 リフレクション 〜</p>
-                        <p class="text-slate-300 leading-relaxed">
+                        <div class="text-center md:text-left">
+                            <p class="bg-yellow-500/20 text-yellow-300 font-bold text-lg inline-block px-4 py-1 rounded-full mb-6">〜 リフレクション 〜</p>
+                        </div>
+                        
+                        <!-- 4:3画像エリア -->
+                        <div class="w-full md:w-2/3 aspect-[4/3] bg-slate-800 rounded-xl overflow-hidden mb-6 border border-white/10 shadow-lg relative group mx-auto md:mx-0">
+                            <img src="images/LP6.png" 
+                                 alt="振り返りシートに記入する様子" 
+                                 class="w-full h-full object-cover transform transition hover:scale-105 duration-500">
+                        </div>
+
+                        <p class="text-slate-300 leading-relaxed text-lg">
                             「いい話を聞いて終わり」にしない。得た気づきを、その場で自分の言葉にする時間。自己分析が一人で進まない人も、この30分でESや面接で伝えたいことを一気に言語化できる。
                         </p>
                     </div>
@@ -226,17 +280,27 @@
 
                 <!-- Step 4 -->
                 <div class="glow-box rounded-2xl p-6 md:p-8 flex flex-col md:flex-row gap-6 items-start transform transition hover:-translate-y-1 bg-white/5">
-                    <div class="flex-shrink-0 text-center md:w-32">
+                    <div class="flex-shrink-0 text-center md:w-32 w-full">
                         <div class="text-sm text-green-400 font-bold">Step 04</div>
                         <div class="text-3xl font-black">60<span class="text-sm font-normal text-slate-400 ml-1">min</span></div>
                     </div>
-                    <div class="flex-grow">
-                        <h3 class="text-2xl font-bold mb-3 flex items-center">
+                    <div class="flex-grow w-full">
+                        <h3 class="text-2xl font-bold mb-3 flex items-center justify-center md:justify-start">
                             <i class="fas fa-glass-cheers text-green-400 mr-3"></i>
                             リアルの本音を聞けるチャンス
                         </h3>
-                        <p class="bg-yellow-500/20 text-yellow-300 font-bold text-lg inline-block px-4 py-1 rounded-full mb-4">〜 立食パーティー（軽食付き） 〜</p>
-                        <p class="text-slate-300 leading-relaxed">
+                        <div class="text-center md:text-left">
+                            <p class="bg-yellow-500/20 text-yellow-300 font-bold text-lg inline-block px-4 py-1 rounded-full mb-6">〜 立食パーティー（軽食付き） 〜</p>
+                        </div>
+                        
+                        <!-- 4:3画像エリア -->
+                        <div class="w-full md:w-2/3 aspect-[4/3] bg-slate-800 rounded-xl overflow-hidden mb-6 border border-white/10 shadow-lg relative group mx-auto md:mx-0">
+                            <img src="images/LP7.png" 
+                                 alt="立食パーティーでの交流" 
+                                 class="w-full h-full object-cover transform transition hover:scale-105 duration-500">
+                        </div>
+
+                        <p class="text-slate-300 leading-relaxed text-lg">
                             軽食片手に"オフレコ"質問。聞きにくかったことも、フランクな食事の場なら人事の本音を独占できるチャンス。企業と学生の垣根を超えた交流で、就活の仲間やメンターを見つけよう。
                         </p>
                     </div>
@@ -246,42 +310,41 @@
     </section>
 
     <!-- 参加企業 -->
-    <section class="py-16 bg-slate-900 border-t border-slate-800">
+    <section class="py-16 bg-slate-900 border-t border-slate-800 w-full overflow-hidden">
         <div class="max-w-6xl mx-auto px-4 text-center">
             <h3 class="text-xl text-slate-400 font-bold mb-8 tracking-widest">参加企業</h3>
-            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12 opacity-80">
-                <!-- ロゴの代わりにテキストでスタイリッシュに表示 -->
-                <span class="text-xl md:text-2xl font-bold text-white">JR九州</span>
-                <span class="text-xl md:text-2xl font-bold text-white">福岡銀行</span>
-                <span class="text-xl md:text-2xl font-bold text-white">西日本シティ銀行</span>
-                <span class="text-xl md:text-2xl font-bold text-white">イオン九州</span>
-                <span class="text-xl md:text-2xl font-bold text-white">オーリック</span>
+            <div class="flex flex-wrap justify-center items-center gap-6 md:gap-12 opacity-80">
+                <span class="text-lg md:text-2xl font-bold text-white whitespace-nowrap">JR九州</span>
+                <span class="text-lg md:text-2xl font-bold text-white whitespace-nowrap">福岡銀行</span>
+                <span class="text-lg md:text-2xl font-bold text-white whitespace-nowrap">西日本シティ銀行</span>
+                <span class="text-lg md:text-2xl font-bold text-white whitespace-nowrap">イオン九州</span>
+                <span class="text-lg md:text-2xl font-bold text-white whitespace-nowrap">オーリック</span>
             </div>
-            <p class="mt-6 text-sm text-slate-500">※企業からの「ウチを受けて」という勧誘はありません。</p>
+            <p class="mt-6 text-sm text-slate-500 px-4">※企業からの「ウチを受けて」という勧誘はありません。</p>
         </div>
     </section>
 
     <!-- イベント詳細 & CTA -->
-    <section id="entry" class="py-20 relative hero-bg">
+    <section id="entry" class="py-20 relative hero-bg w-full overflow-hidden">
         <div class="max-w-3xl mx-auto px-4 relative z-10">
-            <div class="glow-box rounded-3xl p-8 md:p-12 border-t-4 border-t-cyan-400">
+            <div class="glow-box rounded-3xl p-6 md:p-12 border-t-4 border-t-cyan-400">
                 <h2 class="text-3xl font-bold text-center mb-8">イベント概要</h2>
                 
                 <div class="space-y-4 text-sm md:text-base mb-10">
-                    <div class="flex border-b border-slate-700 pb-3">
-                        <div class="w-24 font-bold text-cyan-400">日時</div>
+                    <div class="flex flex-col md:flex-row border-b border-slate-700 pb-3">
+                        <div class="w-full md:w-24 font-bold text-cyan-400 mb-1 md:mb-0">日時</div>
                         <div>2026年2月23日（月・祝） 13:00〜18:00</div>
                     </div>
-                    <div class="flex border-b border-slate-700 pb-3">
-                        <div class="w-24 font-bold text-cyan-400">場所</div>
+                    <div class="flex flex-col md:flex-row border-b border-slate-700 pb-3">
+                        <div class="w-full md:w-24 font-bold text-cyan-400 mb-1 md:mb-0">場所</div>
                         <div>大名カンファレンス<br><span class="text-xs text-slate-400">（福岡県福岡市中央区大名２丁目６−５０）</span></div>
                     </div>
-                    <div class="flex border-b border-slate-700 pb-3">
-                        <div class="w-24 font-bold text-cyan-400">参加費</div>
-                        <div>無料 <span class="text-yellow-400 text-xs border border-yellow-400 rounded px-1 ml-2">軽食付き</span></div>
+                    <div class="flex flex-col md:flex-row border-b border-slate-700 pb-3">
+                        <div class="w-full md:w-24 font-bold text-cyan-400 mb-1 md:mb-0">参加費</div>
+                        <div>無料 <span class="text-yellow-400 text-xs border border-yellow-400 rounded px-1 ml-2 inline-block">軽食付き</span></div>
                     </div>
-                    <div class="flex border-b border-slate-700 pb-3">
-                        <div class="w-24 font-bold text-cyan-400">対象</div>
+                    <div class="flex flex-col md:flex-row border-b border-slate-700 pb-3">
+                        <div class="w-full md:w-24 font-bold text-cyan-400 mb-1 md:mb-0">対象</div>
                         <div>大学生・大学院生（全学年対象）</div>
                     </div>
                 </div>
@@ -292,8 +355,7 @@
                         5時間で、戦い方を変えよう。
                     </p>
                     
-                    <!-- buttonタグをaタグに変更し、Googleフォームへのリンクを設定 -->
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeD2wHF6SYoe3_wcA9COFgcbL1C3hYR_paIPDXkd8s3CjkzOg/viewform" target="_blank" rel="noopener noreferrer" class="inline-block w-full md:w-auto px-12 py-5 bg-gradient-to-r from-pink-500 to-yellow-500 rounded-full font-black text-xl text-white shadow-lg shadow-pink-500/30 transform transition hover:scale-105 hover:shadow-pink-500/50 text-center no-underline">
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeD2wHF6SYoe3_wcA9COFgcbL1C3hYR_paIPDXkd8s3CjkzOg/viewform" target="_blank" rel="noopener noreferrer" class="inline-block w-full md:w-auto px-8 md:px-12 py-5 bg-gradient-to-r from-pink-500 to-yellow-500 rounded-full font-black text-lg md:text-xl text-white shadow-lg shadow-pink-500/30 transform transition hover:scale-105 hover:shadow-pink-500/50 text-center no-underline">
                         今すぐ申し込む（無料）
                     </a>
                     
